@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - Animating With Lottie, ScrollMagic, and Gsap</title>
+  
+  
+  
+  
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.white {
+  color: black;
+}
+ 
+.header {
+  width: 80%;
+  background: transparent;
+  padding: 1rem;
+  position: absolute;
+  top: 10rem;
+  left: 1rem;
+  z-index: 1000;
+}
+
+.lottie-env {
+  width: 100%;
+  height: auto;
+}
+
+.lottie-env .button-container {
+}
+
+a {
+  color: black;
+}
+
+.cta-text {
+  text-align: center;
+}
+
+#lottie-two svg g g g path {
+  cursor: pointer;
+}
+
+#lottie-four svg g g g path {
+  cursor: pointer;
+}
+
+#lottie-five svg g g g path {
+  cursor: pointer;
+}
+
+#lottie-six svg g g g path {
+  cursor: pointer;
+}
+
+#lottie-seven svg g g g path {
+  cursor: pointer;
+}
+
+.env-three {
+  width: 100%;
+}
+
+#lottie-three {
+  height: 100vh;
+  width: 100%;
+}
+
+.env-two {
+  height: 40rem;
+  width: 40rem;
+}
+
+.display-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="header"> 
+</div>
+
+
+<section class="lottie-env env-three">
+  <div id="lottie-three"><div>
+</section>
+
+
+
+
+
+
+
+
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.4.2/lottie.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js'></script>
+      <script id="rendered-js" >
+//////////////////////////
+
+//FIRST animation : https://assets.lottiefiles.com/datafiles/3gpFPHJI4WlLe62/data.json
+
+
+
+var animData = {
+  container: document.getElementById('lottie-three'),
+ // path: 'https://assets.lottiefiles.com/datafiles/7HMs29Q0NhBUKCp/data.json',
+  path:'json_formats/desktop.json',
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  name: "animScroll" },
+animScroll,tl;
+
+
+var animScroll = bodymovin.loadAnimation(animData);
+
+
+animScroll.addEventListener('DOMLoaded', function () {
+  tl = new TimelineMax({ repeat: 0 });
+  tl.to({ frame: 0 }, 1, {
+    frame: animScroll.totalFrames - 1,
+    onUpdate: function () {
+      animScroll.goToAndStop(Math.round(this.target.frame), true);
+    },
+    Ease: Linear.easeNone });
+
+
+  var controller = new ScrollMagic.Controller();
+
+  var scene = new ScrollMagic.Scene({
+    triggerElement: ".env-three",
+    offset: 300,
+    duration: 3000 }).setTween(tl).setPin("#lottie-three").addTo(controller);
+
+});
+
+
+
+// animation used: https://www.lottiefiles.com/29-motorcycle
+
+
+
+//////////////////////////
+
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
